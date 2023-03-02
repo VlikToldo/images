@@ -1,4 +1,5 @@
 // import style from './image-gallery.module.css';
+import { memo } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -10,7 +11,7 @@ const ImageGallery = ({children}) => {
   </ul>)
 };
 
-export default ImageGallery;
+export default memo(ImageGallery);
 
 
 ImageGallery.propTypes ={

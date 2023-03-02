@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import PropTypes from 'prop-types';
 
 import style from './image-gallery-item.module.css'
@@ -16,7 +18,7 @@ const elements = items.map(({id, webformatURL, largeImageURL})=>
     )
 }
 
-export default ImageGalleryItem;
+export default memo(ImageGalleryItem);
 
 ImageGalleryItem.defaultProps = {
     items: [],
