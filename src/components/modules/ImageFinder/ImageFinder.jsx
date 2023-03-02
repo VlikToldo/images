@@ -61,9 +61,9 @@ const ImageFinder = () => {
   return (
     <>
       <Searchbar onSubmit={onSearchImage} />
-      <ImageGallery>
+      {Boolean(search) && <ImageGallery>
         <ImageGalleryItem items={items} showImage={showImage} />
-      </ImageGallery>
+      </ImageGallery>}
       {loading && <ColorRing />}
       {error && <p>{error}</p>}
       {Boolean(items.length) && (!loading &&
