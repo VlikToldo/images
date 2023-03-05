@@ -1,19 +1,21 @@
-// import style from './image-gallery.module.css';
 import { memo } from 'react';
-
 import PropTypes from 'prop-types';
 
-import style from './image-gallery.module.css'
+import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 
-const ImageGallery = ({children}) => {
-  return (<ul className={style.ImageGallery}>
-    {children}
-  </ul>)
+import style from './image-gallery.module.css';
+
+const ImageGallery = ({ items, showImage }) => {
+  const elements = items.map(item => {
+    <ImageGalleryItem key={item.id} {...items} showImage={showImage} />;
+  });
+
+  return <ul className={style.ImageGallery}>{elements}</ul>;
 };
 
 export default memo(ImageGallery);
 
-
-ImageGallery.propTypes ={
-  children: PropTypes.element.isRequired
-}
+ImageGallery.propTypes = {
+  items: PropTypes.array.isRequired,
+  showImage: PropTypes.func.isRequired,
+};
