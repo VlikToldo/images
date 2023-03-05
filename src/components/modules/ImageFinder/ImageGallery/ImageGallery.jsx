@@ -7,7 +7,7 @@ import style from './image-gallery.module.css';
 
 const ImageGallery = ({ items, showImage }) => {
   const elements = items.map(item => {
-    <ImageGalleryItem key={item.id} {...items} showImage={showImage} />;
+  return  <ImageGalleryItem key={item.id} {...items} showImage={showImage} />;
   });
 
   return <ul className={style.ImageGallery}>{elements}</ul>;
