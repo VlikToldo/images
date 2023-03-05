@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 import style from './image-gallery-item.module.css';
 
-const ImageGalleryItem = ({  largeImageURL, webformatURL, showImage }) => {
+const ImageGalleryItem = ({ largeImageURL, webformatURL, showImage }) => {
+  console.log(webformatURL)
   return (
     <li
       onClick={() => showImage({ largeImageURL })}
