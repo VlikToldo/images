@@ -17,6 +17,7 @@ const ImageFinder = () => {
   const [page, setPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [imageDetails, setImageDetails] = useState(null);
+  const [showBtn, setShowBtn] = useState(false)
 
   useEffect(() => {
     if (!search) {
@@ -27,7 +28,8 @@ const ImageFinder = () => {
       try {
         setLoading(true);
         const data = await searchImage(search, page);
-        setItems(prevItems => ([...prevItems, ...data]))
+        setShowBtn(data.hits.length===12)
+        setItems(prevItems => ([...prevItems, ...data.hits]))
       } catch (error) {
         setError(error.message);
       } finally {
@@ -63,9 +65,10 @@ const ImageFinder = () => {
       {Boolean(search) && <ImageGallery items={items} showImage={showImage}/>}
       {loading && <ColorRing />}
       {error && <p>{error}</p>}
-      {Boolean(items.length) && (!loading &&
+      {!showBtn && Boolean(items.length) && <p>This is all i could find</p>}
+      {Boolean(items.length) && !loading && showBtn &&
         <Button onClick={loadMore}>Load more</Button>
-      )}
+      }
       {showModal && (
         <Modal close={closeModal}>
           <ImageDetails imageDetails={imageDetails} />

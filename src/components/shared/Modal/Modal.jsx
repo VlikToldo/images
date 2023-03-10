@@ -9,12 +9,21 @@ const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ close, children }) => {
   useEffect(() => {
-    document.addEventListener('keydown', closeModal);
-    return () => document.removeEventListener('keydown', closeModal);
-  });
 
-  const closeModal = ({ target, currentTarget, code }) => {
-    if (target === currentTarget || code === 'Escape') {
+    const closeModalEsc = ({code}) => {
+      if (code === 'Escape') {
+        close();
+      }
+    }
+    document.addEventListener('keydown', closeModalEsc);
+
+    return () => document.removeEventListener('keydown', closeModalEsc);
+  }, [close]);
+
+
+
+  const closeModal = ({ target, currentTarget }) => {
+    if (target === currentTarget) {
       close();
     }
   };

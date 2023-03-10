@@ -17,5 +17,5 @@ export const searchImage = async (q, page = 1,) => {
             page,
         }
     });
-    return data.hits;
+    return data;
 }
