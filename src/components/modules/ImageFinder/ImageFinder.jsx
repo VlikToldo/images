@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect} from 'react';
 import { ColorRing } from 'react-loader-spinner';
 
 import Searchbar from './Searchbar/Searchbar';
