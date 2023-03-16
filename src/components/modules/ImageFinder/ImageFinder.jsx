@@ -37,27 +37,27 @@ const ImageFinder = () => {
       }
     }
     fetchImage()
-  }, [search, page, setError, setLoading, setItems] );
+  }, [search, page] );
 
-  const loadMore = useCallback(() => {
+  const loadMore = () => {
     setPage(prevPage => prevPage + 1)
-  }, []);
+  };
 
-  const onSearchImage = useCallback(({ search }) => {
+  const onSearchImage = ({ search }) => {
     setSearch(search);
     setItems([]);
     setPage(1);
-  }, []);
+  };
 
-  const showImage = useCallback(({ largeImageURL }) => {
+  const showImage = ({ largeImageURL }) => {
     setImageDetails(largeImageURL);
     setShowModal(true);
-  }, []);
+  };
 
-  const closeModal = useCallback(() => {
+  const closeModal = () => {
     setShowModal(false);
     setImageDetails(null);
-  }, []);
+  };
 
   return (
     <>
